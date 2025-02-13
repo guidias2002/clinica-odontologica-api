@@ -11,4 +11,6 @@ public interface ConsultationMapper {
     //ConsultationMapper INSTANCE = Mappers.getMapper(ConsultationMapper.class);
 
     ConsultationEntity toConsultationEntity(ConsultationDto consultationDto);
+
+    ConsultationDto toConsultationDto(ConsultationEntity consultationEntity);
 }
