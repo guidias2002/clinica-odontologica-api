@@ -24,7 +24,7 @@ public class ConsultationEntity {
     private String patientName;
     private String patientEmail;
     private String patientCellphone;
-    private String patientDocument;
+    private String patientCpf;
     private String dentistName;
     private LocalDateTime consultationDate;
     private String consultationType;
@@ -40,11 +40,4 @@ public class ConsultationEntity {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
 }
