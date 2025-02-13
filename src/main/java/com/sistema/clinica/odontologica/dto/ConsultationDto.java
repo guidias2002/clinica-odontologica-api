@@ -9,7 +9,7 @@ public record ConsultationDto(
         String patientName,
         String patientEmail,
         String patientCellphone,
-        String patientDocument,
+        String patientCpf,
         String dentistName,
         LocalDateTime consultationDate,
         String consultationType,
