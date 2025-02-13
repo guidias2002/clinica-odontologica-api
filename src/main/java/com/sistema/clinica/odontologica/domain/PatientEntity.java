@@ -22,6 +22,8 @@ public class PatientEntity {
 
     private String name;
 
+    private String cellphone;
+
     @Column(unique = true)
     private String cpf;
 
