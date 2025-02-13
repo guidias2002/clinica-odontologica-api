@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Service
@@ -28,5 +29,17 @@ public class ConsultationService {
         this.consultationRepository.save(newConsultation);
 
         return consultationMapper.toConsultationDto(newConsultation);
+    }
+
+    public List<ConsultationDto> getAllConsultations() {
+        List<ConsultationEntity> consultationEntityList = consultationRepository.findAll();
+
+        return consultationMapper.toConsultationDtoList(consultationEntityList);
+    }
+
+    public List<ConsultationDto> getAllConsultationsByPatient(String patientCpf) {
+        List<ConsultationEntity> consultationEntityList = consultationRepository.findAllConsultationByPatientCpf(patientCpf);
+
+        return consultationMapper.toConsultationDtoList(consultationEntityList);
     }
 }
