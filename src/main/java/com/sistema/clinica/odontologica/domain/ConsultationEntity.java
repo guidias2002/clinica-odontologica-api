@@ -1,5 +1,6 @@
 package com.sistema.clinica.odontologica.domain;
 
+import com.sistema.clinica.odontologica.dto.ConsultationDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,4 +40,11 @@ public class ConsultationEntity {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 }
