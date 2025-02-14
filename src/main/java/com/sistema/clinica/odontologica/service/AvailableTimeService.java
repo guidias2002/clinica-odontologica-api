@@ -39,7 +39,7 @@ public class AvailableTimeService {
     }
 
     public void reserveTime(Long professionalId, LocalDate date, LocalTime time) {
-        ProfessionalEntity professionalEntity = professionalMapper.toProfessionalEntity(professionalService.getProfessionalById(professionalId));
+        professionalMapper.toProfessionalEntity(professionalService.getProfessionalById(professionalId));
 
         // retorna um availableTimeEntity pela data e hora enviada
         AvailableTimeEntity availableTimeEntity = availableTimeRepository.findByDateAndTime(date, time);
@@ -53,7 +53,7 @@ public class AvailableTimeService {
     }
 
     public List<AvailableTimeDto> getProfessionalHoursPerDay(Long professionalId, LocalDate date) {
-        ProfessionalEntity professionalEntity = professionalMapper.toProfessionalEntity(professionalService.getProfessionalById(professionalId));
+        professionalMapper.toProfessionalEntity(professionalService.getProfessionalById(professionalId));
 
         return availableTimeMapper.toAvailableTimeListDto(availableTimeRepository.findByProfessionalIdAndDate(professionalId, date));
     }
