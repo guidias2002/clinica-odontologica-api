@@ -46,6 +46,6 @@ public class ConsultationController {
     @GetMapping("/getProfessionalDayAppointments/{professionalId}")
     public ResponseEntity<List<ConsultationDto>> getProfessionalDayAppointments(@PathVariable Long professionalId) {
 
-        return new ResponseEntity<>(consultationService.getProfessionalDayAppointments(professionalId, LocalDate.now()), HttpStatus.OK);
+        return new ResponseEntity<>(consultationService.getProfessionalDayAppointments(professionalId), HttpStatus.OK);
     }
 }

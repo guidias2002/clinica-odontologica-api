@@ -66,8 +66,8 @@ public class ConsultationService {
         return consultationMapper.toConsultationDtoList(consultationEntityList);
     }
 
-    public List<ConsultationDto> getProfessionalDayAppointments(Long professionalId, LocalDate date) {
+    public List<ConsultationDto> getProfessionalDayAppointments(Long professionalId) {
 
-        return consultationMapper.toConsultationDtoList(consultationRepository.findByProfessionalIdAndConsultationDate(professionalId, date));
+        return consultationMapper.toConsultationDtoList(consultationRepository.findByProfessionalIdAndConsultationDate(professionalId, LocalDate.now()));
     }
 }
