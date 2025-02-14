@@ -14,5 +14,7 @@ public interface AvailableTimeRepository extends JpaRepository<AvailableTimeEnti
 
     List<AvailableTimeEntity> findByProfessionalIdAndDateAndBookedFalse(Long professionalId, LocalDate date);
 
+    List<AvailableTimeEntity> findByProfessionalIdAndDate(Long professionalId, LocalDate date);
+
     AvailableTimeEntity findByDateAndTime(LocalDate date, LocalTime time);
 }
