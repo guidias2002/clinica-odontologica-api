@@ -42,6 +42,7 @@ public class AvailableTimeService {
         professionalMapper.toProfessionalEntity(professionalService.getProfessionalById(professionalId));
 
         // retorna um availableTimeEntity pela data e hora enviada
+        // VERIFICA POSSIBILIDADE DE ALTERAR PARA PROCURAR PELO ID DO HORARIO
         AvailableTimeEntity availableTimeEntity = availableTimeRepository.findByDateAndTime(date, time);
 
         if(availableTimeEntity.isBooked()) {
