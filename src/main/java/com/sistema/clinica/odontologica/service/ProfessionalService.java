@@ -33,15 +33,16 @@ public class ProfessionalService {
         createDefaultSchedule(newProfessional);
     }
 
-    public ProfessionalDto getProfessionalById(Long professionaId) {
-        ProfessionalEntity professional = professionalRepository.findById(professionaId)
+    public ProfessionalDto getProfessionalById(Long professionalId) {
+        ProfessionalEntity professional = professionalRepository.findById(professionalId)
                 .orElseThrow(() -> new RuntimeException("Profissional não encontrado."));
 
         return professionalMapper.toProfessionalDto(professional);
     }
 
 
-    // método para criar horários para os próximos 30 dias
+
+    // metodo para criar horários para os próximos 30 dias
     private void createDefaultSchedule(ProfessionalEntity professional) {
         List<LocalTime> defaultTimes = Arrays.asList(
                 LocalTime.of(8, 0), LocalTime.of(9, 0), LocalTime.of(10, 0),
@@ -56,7 +57,7 @@ public class ProfessionalService {
             LocalDate date = today.plusDays(i);
             for (LocalTime time : defaultTimes) {
                 AvailableTimeEntity availableTime = new AvailableTimeEntity();
-                availableTime.setProfessional(professional);
+                availableTime.setProfessionalId(professional.getId());
                 availableTime.setDate(date);
                 availableTime.setTime(time);
                 availableTime.setBooked(false);
