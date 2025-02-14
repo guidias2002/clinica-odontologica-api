@@ -22,10 +22,7 @@ public class AvailableTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "professional_id", nullable = false)
-    @JsonBackReference
-    private ProfessionalEntity professional;
+    private Long professionalId;
 
     @Column(nullable = false)
     private LocalDate date;
@@ -36,8 +33,8 @@ public class AvailableTimeEntity {
     @Column(nullable = false)
     private boolean booked = false;
 
-    public AvailableTimeEntity(ProfessionalEntity professional, LocalDate date, LocalTime time, boolean booked) {
-        this.professional = professional;
+    public AvailableTimeEntity(Long professionalId, LocalDate date, LocalTime time, boolean booked) {
+        this.professionalId = professionalId;
         this.date = date;
         this.time = time;
         this.booked = booked;

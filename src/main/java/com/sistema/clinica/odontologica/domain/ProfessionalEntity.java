@@ -27,7 +27,7 @@ public class ProfessionalEntity {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "professional", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "professionalId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AvailableTimeEntity> availableTimes = new ArrayList<>();
 }
 
