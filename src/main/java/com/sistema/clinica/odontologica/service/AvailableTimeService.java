@@ -38,8 +38,8 @@ public class AvailableTimeService {
                 .collect(Collectors.toList());
     }
 
-    public AvailableTimeDto reserveTime(Long professionaId, LocalDate date, LocalTime time) {
-        ProfessionalEntity professionalEntity = professionalMapper.toProfessionalEntity(professionalService.getProfessionalById(professionaId));
+    public void reserveTime(Long professionalId, LocalDate date, LocalTime time) {
+        ProfessionalEntity professionalEntity = professionalMapper.toProfessionalEntity(professionalService.getProfessionalById(professionalId));
 
         // retorna um availableTimeEntity pela data e hora enviada
         AvailableTimeEntity availableTimeEntity = availableTimeRepository.findByDateAndTime(date, time);
@@ -50,7 +50,12 @@ public class AvailableTimeService {
 
         availableTimeEntity.setBooked(true);
         availableTimeRepository.save(availableTimeEntity);
-
-        return availableTimeMapper.toAvailableTimeDto(availableTimeEntity);
     }
+
+    public List<AvailableTimeDto> getProfessionalHoursPerDay(Long professionalId, LocalDate date) {
+        ProfessionalEntity professionalEntity = professionalMapper.toProfessionalEntity(professionalService.getProfessionalById(professionalId));
+
+        return availableTimeMapper.toAvailableTimeListDto(availableTimeRepository.findByProfessionalIdAndDate(professionalId, date));
+    }
+
 }
