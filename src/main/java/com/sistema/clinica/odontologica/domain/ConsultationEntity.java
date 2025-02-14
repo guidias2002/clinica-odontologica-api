@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "consulta")
@@ -25,13 +27,15 @@ public class ConsultationEntity {
     private String patientEmail;
     private String patientCellphone;
     private String patientCpf;
-    private String dentistName;
-    private LocalDateTime consultationDate;
+    private Long professionalId;
+    private String professionalName;
+    private LocalDate consultationDate;
+    private LocalTime consultationTime;
     private String consultationType;
     private int estimatedDuration;
 
     @Enumerated(EnumType.STRING)
-    private ConsultationStatus consultationStatus;
+    private ConsultationStatus status;
     private String observations;
     private BigDecimal consultationValue;
     private String paymentMethod;
