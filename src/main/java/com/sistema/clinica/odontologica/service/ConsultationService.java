@@ -36,7 +36,7 @@ public class ConsultationService {
     public ConsultationDto saveConsultation(ConsultationDto consultationDto) {
         ConsultationEntity newConsultation = consultationMapper.toConsultationEntity(consultationDto);
 
-        availableTimeService.reserveTime(consultationDto.professionalId(), consultationDto.consultationDate(), consultationDto.consultationTime());
+        availableTimeService.reserveTime(consultationDto.professionalId(), consultationDto.availableTimeId());
 
         newConsultation.setCreatedAt(LocalDateTime.now());
         newConsultation.setUpdatedAt(LocalDateTime.now());
