@@ -29,6 +29,7 @@ public class ConsultationEntity {
     private String patientCpf;
     private Long professionalId;
     private String professionalName;
+    private Long availableTimeId;
     private LocalDate consultationDate;
     private LocalTime consultationTime;
     private String consultationType;
