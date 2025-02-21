@@ -2,6 +2,7 @@ package com.sistema.clinica.odontologica.service;
 
 import com.sistema.clinica.odontologica.domain.AvailableTimeEntity;
 import com.sistema.clinica.odontologica.domain.ProfessionalEntity;
+import com.sistema.clinica.odontologica.dto.ProfessionalBasicInfoDto;
 import com.sistema.clinica.odontologica.dto.ProfessionalDto;
 import com.sistema.clinica.odontologica.mapper.ProfessionalMapper;
 import com.sistema.clinica.odontologica.repository.AvailableTimeRepository;
@@ -38,6 +39,11 @@ public class ProfessionalService {
                 .orElseThrow(() -> new RuntimeException("Profissional não encontrado."));
 
         return professionalMapper.toProfessionalDto(professional);
+    }
+
+    public List<ProfessionalBasicInfoDto> getAllProfessionals() {
+
+        return professionalMapper.toProfessionalBasicInfoDtoList(professionalRepository.findAll());
     }
 
 
