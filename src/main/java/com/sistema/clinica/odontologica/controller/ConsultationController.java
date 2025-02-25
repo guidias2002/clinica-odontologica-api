@@ -48,4 +48,11 @@ public class ConsultationController {
 
         return new ResponseEntity<>(consultationService.getProfessionalDayAppointments(professionalId), HttpStatus.OK);
     }
+
+    @GetMapping("/getAllConsultationByProfessionalId/{professionalId}")
+    public ResponseEntity<List<ConsultationDto>> getAllConsultationByProfessionalId(@PathVariable Long professionalId) {
+
+        return new ResponseEntity<>(consultationService.getAllConsultationByProfessionalId(professionalId), HttpStatus.OK);
+    }
+
 }
