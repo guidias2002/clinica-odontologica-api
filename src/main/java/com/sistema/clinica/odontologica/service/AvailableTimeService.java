@@ -38,13 +38,10 @@ public class AvailableTimeService {
                 .collect(Collectors.toList());
     }
 
-    public void reserveTime(Long professionalId, Long availableTimeId) {
-        professionalMapper.toProfessionalEntity(professionalService.getProfessionalById(professionalId));
+    public void reserveTime(LocalDate date, LocalTime time, Long professionalId) {
+        professionalService.getProfessionalById(professionalId);
 
-        // retorna um availableTimeEntity pela data e hora enviada
-        // VERIFICA POSSIBILIDADE DE ALTERAR PARA PROCURAR PELO ID DO HORARIO
-        AvailableTimeEntity availableTimeEntity = availableTimeRepository.findById(availableTimeId)
-                .orElseThrow(() -> new RuntimeException("Data de marcação não encontrada."));
+        AvailableTimeEntity availableTimeEntity = availableTimeRepository.findByDateAndTimeAndProfessionalId(date, time, professionalId);
 
         if(availableTimeEntity.isBooked()) {
             throw new RuntimeException("Esse horário já foi reservado.");
