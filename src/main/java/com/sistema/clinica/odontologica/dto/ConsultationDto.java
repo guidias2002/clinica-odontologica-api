@@ -14,7 +14,6 @@ public record ConsultationDto(
         String patientCpf,
         Long professionalId,
         String professionalName,
-        Long availableTimeId,
         LocalDate consultationDate,
         LocalTime consultationTime,
         String consultationType,
