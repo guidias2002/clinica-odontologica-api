@@ -2,13 +2,9 @@ package com.sistema.clinica.odontologica.service;
 
 import com.sistema.clinica.odontologica.domain.ConsultationEntity;
 import com.sistema.clinica.odontologica.domain.ConsultationStatus;
-import com.sistema.clinica.odontologica.domain.PatientEntity;
-import com.sistema.clinica.odontologica.domain.ProfessionalEntity;
 import com.sistema.clinica.odontologica.dto.ConsultationDto;
 import com.sistema.clinica.odontologica.dto.PatientDto;
-import com.sistema.clinica.odontologica.dto.ProfessionalDto;
 import com.sistema.clinica.odontologica.mapper.ConsultationMapper;
-import com.sistema.clinica.odontologica.mapper.ProfessionalMapper;
 import com.sistema.clinica.odontologica.repository.ConsultationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,10 +29,13 @@ public class ConsultationService {
     @Autowired
     private AvailableTimeService availableTimeService;
 
+    @Autowired
+    private ProfessionalService professionalService;
+
     public ConsultationDto saveConsultation(ConsultationDto consultationDto) {
         ConsultationEntity newConsultation = consultationMapper.toConsultationEntity(consultationDto);
 
-        availableTimeService.reserveTime(consultationDto.professionalId(), consultationDto.availableTimeId());
+        availableTimeService.reserveTime(consultationDto.consultationDate(), consultationDto.consultationTime(), consultationDto.professionalId());
 
         newConsultation.setCreatedAt(LocalDateTime.now());
         newConsultation.setUpdatedAt(LocalDateTime.now());
@@ -69,5 +68,11 @@ public class ConsultationService {
     public List<ConsultationDto> getProfessionalDayAppointments(Long professionalId) {
 
         return consultationMapper.toConsultationDtoList(consultationRepository.findByProfessionalIdAndConsultationDate(professionalId, LocalDate.now()));
+    }
+
+    public List<ConsultationDto> getAllConsultationByProfessionalId(Long professionalId) {
+        professionalService.getProfessionalById(professionalId);
+
+        return consultationMapper.toConsultationDtoList(consultationRepository.findAllConsultationByProfessionalId(professionalId));
     }
 }
