@@ -16,4 +16,6 @@ public interface ConsultationRepository extends JpaRepository<ConsultationEntity
     List<ConsultationEntity> findAllConsultationByStatus(ConsultationStatus status);
 
     List<ConsultationEntity> findByProfessionalIdAndConsultationDate(Long professionalId, LocalDate date);
+
+    List<ConsultationEntity> findAllConsultationByProfessionalId(Long id);
 }
