@@ -76,3 +76,4 @@ public class ConsultationService {
         return consultationMapper.toConsultationDtoList(consultationRepository.findAllConsultationByProfessionalId(professionalId));
     }
 }
+
